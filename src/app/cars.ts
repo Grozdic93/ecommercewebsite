@@ -2,7 +2,6 @@ import { ICar, carModel } from './car.model';
 
 export const cars: ICar[] = [
   { 
-
     model: 'Mustang',
     prodYear: '1975',
     qtty: 1,

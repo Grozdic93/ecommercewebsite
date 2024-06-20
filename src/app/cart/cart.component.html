@@ -1,1 +1,39 @@
-<p>cart works!</p>
+<div class="container">
+
+    <table class="table table-striped my-5">
+        <thead>
+            <tr>
+                <th scope="col">Model</th>
+                <th scope="col">Year of Prod</th>
+                <th scope="col">Image</th>
+                <th scope="col">qtty</th>
+                <th scope="col">price</th>
+                <th scope="col">actions</th>
+                <th scope="col">total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(car of cartItems; track car; let i = $index){
+                <tr>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.prodYear }}</td>
+                    <td><img height="50" [src]="car.image" alt=""></td> 
+                    <td>{{ car.qtty }}</td>
+                    <td>{{ car.price | currency:'EUR'}}</td>
+                    <td>
+                        <button (click)="onDecreaseQtty(car)" class="btn btn-warning">-</button>
+                        <button (click)="onDelete(i)" class="btn btn-danger">del</button>
+                        <button (click)="onIncreaseQtty(car)" class="btn btn-success">+</button>
+                    </td>
+                    <td>{{ car.qtty * car.price | currency:'EUR' }}</td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="7">TOTAL: {{ total | currency:'EUR'}} </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

@@ -7,7 +7,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ car.model }}</h5>
                 <p class="card-text">
-                  {{ car.price }}
+                  {{ car.price | currency:'EUR' }}
                 </p>
                 <a routerLink="/details/{{i}}" class="btn btn-primary">details</a>
               </div>
@@ -16,5 +16,4 @@
     }
     
   </div>
-  <button>submit</button>
 </section>

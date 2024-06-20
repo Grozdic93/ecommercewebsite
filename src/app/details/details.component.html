@@ -1,6 +1,6 @@
-<h2>{{ car.model }}</h2>
+<h2>{{ car.model | uppercase}}</h2>
 <hr>
-<p>{{ car.price }}</p>
+<p>{{ car.price | currency:'EUR' }}</p>
 <p>{{ car.prodYear }}</p>
 <img height="300" [src]="car.image" alt="">
 <hr>

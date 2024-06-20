@@ -12,14 +12,40 @@ export class CartService {
 
 
   addToCart(car: ICar){
-    this.cartItems.push(car);
-    console.log(this.cartItems);
+    if(this.cartItems.includes(car)){
+      car.qtty++
+    }else{
+      this.cartItems.push(car);
+    }
+  
     
   }
+  increaseQtty(car:ICar){
+    car.qtty++;
+  }
+  decreaseQtty(car:ICar){
+    // car.qtty > 1 && car.qtty --;
+    if(car.qtty > 1){
+      car.qtty --;
+    }else{
+       this.cartItems = this.cartItems.filter(cartItem => car != cartItem)
+      
+    }
+  }
+  deleteItem(index: number){
+    this.cartItems[index].qtty = 1;
+    this.cartItems.splice(index,1)
+  }
   getData(){
-    return
+    return this.cartItems
   }
   addData(data: string){
     this.formData = data
+  }
+
+  getTotal(): number{
+    let total = 0;
+    this.cartItems.forEach( car => total += car.price * car.qtty)
+    return total;
   }
 }
